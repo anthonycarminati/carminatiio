@@ -1,1 +1,25 @@
-hello world!
+<!DOCTYPE html>
+<html lang="en">
+{% extends "template.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+<body>
+
+<div class="container">
+    {% block navbar %}
+    {{ super() }}
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+</div>
+
+{% block script %}
+{{ super() }}
+{% endblock %}
+</body>
+
+</html>
