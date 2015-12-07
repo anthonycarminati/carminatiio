@@ -5,7 +5,8 @@
 body {
   padding-bottom: 40px;
   color: #FFFBF5;
-  background-color: #004473;
+  /*background-color: #3640c6;*/
+  background-image: url("https://s3.amazonaws.com/anthonycarminati-backgrounds/concrete_wall.png");
 }
 
 
@@ -128,6 +129,10 @@ body {
 
   .featurette-heading {
     font-size: 50px;
+  }
+
+  .navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
   }
 }
 
