@@ -8,4 +8,4 @@ install: "pip install -r requirements.txt"
 script: nosetests
 # pre-build step to set language
 before_install:
-  - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en
+  - locale-gen en_US en_US.UTF-8 && dpkg-reconfigure locales
