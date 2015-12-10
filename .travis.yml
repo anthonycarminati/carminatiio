@@ -9,3 +9,5 @@ script: nosetests
 # # update locale settings
 # before_install:
 #   - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en language-pack-de
+notifications:
+  slack: carminatiio:ISZOupqjubPs27MjEKBRgdcv
