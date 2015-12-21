@@ -12,7 +12,7 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     POSTGRES_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
-
+    SQLALCHEMY_DATABASE_URI = ''
 
 class ProductionConfig(Config):
     POSTGRES_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URL')
