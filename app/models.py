@@ -129,13 +129,13 @@ class Post(db.Model):
 
 class Comment(db.Model):
     __tablename__ = 'blog_comment'
-    comment_id = db.Column()
-    body = db.Column()
-    comment_date = db.Column()
-    commenter_id = db.Column()
-    notify = db.Column()
-    approved = db.Column()
-    post_id = db.Column()
+    comment_id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text)
+    comment_date = db.Column(db.DateTime, index=True, default=datetime.utcnow())
+    commenter_id = db.Column(db.Integer, db.ForeignKey('blog_user.user_id'))
+    notify = db.Column(db.Boolean)
+    approved = db.Column(db.Boolean)
+    post_id = db.Column(db.Integer, db.ForeignKey('blog_post.post_id'))
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):

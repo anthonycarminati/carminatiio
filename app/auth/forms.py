@@ -8,3 +8,4 @@ class LoginForm(Form):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Login')
+
