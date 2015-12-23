@@ -74,9 +74,9 @@ class User(UserMixin, db.Model):
             url = 'https://secure.gravatar.com/avatar'
         else:
             url = 'http://www.gravatar.com/avatar'
-        pass_hash = self.avatar_hash or hashlib.md5(self.email.encode('utf-8')).hexdigest()
-        return '{url}/{pass_hash}?s={size}&d={default}&r={rating}'.\
-            format(url=url, hash=pass_hash, size=size, default=default, rating=rating)
+        grav_hash = self.avatar_hash or hashlib.md5(self.email.encode('utf-8')).hexdigest()
+        return '{url}/{grav_hash}?s={size}&d={default}&r={rating}'.\
+            format(url=url, hash=grav_hash, size=size, default=default, rating=rating)
 
     # ---------------
     # For following posts and users
