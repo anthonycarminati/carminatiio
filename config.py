@@ -11,16 +11,19 @@ class DevelopmentConfig(Config):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 't0p s3cr3t'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = ''
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = os.environ.get('MAIL_PORT')
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
 class TestingConfig(Config):
     TESTING = True
-    POSTGRES_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
 
 
 class ProductionConfig(Config):
-    POSTGRES_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URL')
-
+    pass
 
 config = {
     'development': DevelopmentConfig,

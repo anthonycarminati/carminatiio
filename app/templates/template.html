@@ -40,13 +40,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="{{ url_for('site.index') }}">Home</a>
                     </li>
                     <li>
                         <a href="#">Blog</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{{ url_for('site.contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -64,6 +64,36 @@
     <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename = 'clean-blog/bootstrap.min.js') }}"></script>
 {% endblock script %}
+
+{% block footer %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/acarminati89">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/anthonycarminati">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; carminati.io 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock footer %}
 
 </body>
 
