@@ -21,16 +21,6 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
 
-    app.config.update(
-        DEBUG = True,
-        MAIL_SERVER = 'smtp.gmail.com',
-        MAIL_PORT = 587,
-        MAIL_USE_SSL = False,
-        MAIL_USE_TLS = True,
-        MAIL_USERNAME = 'noreply@carminati.io',
-        MAIL_PASSWORD = 'SYw-8kd-AzH-SpG'
-    )
-
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
