@@ -35,6 +35,9 @@ class User(UserMixin, db.Model):
     avatar_hash = db.Column(db.String(64))
     remember_me = db.Column(db.Boolean)
 
+    post = db.relationship('Post', lazy='dynamic', backref='author')
+    comment = db.relationship('Comment', lazy='dynamic', backref='author')
+
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         if self.email is not None and self.avatar_hash is None:
@@ -114,6 +117,7 @@ class Post(db.Model):
     subtitle = db.Column(db.String(255))
     body = db.Column(db.Text)
     post_date = db.Column(db.DateTime, index=True, default=datetime.utcnow())
+
 
     def __repr__(self):
         return '<Post {body}>'.format(body=self.body)

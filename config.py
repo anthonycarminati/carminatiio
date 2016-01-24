@@ -17,7 +17,7 @@ class DevelopmentConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    TALKS_PER_PAGE = 100
+    TALKS_PER_PAGE = 3
 
 
 class TestingConfig(Config):

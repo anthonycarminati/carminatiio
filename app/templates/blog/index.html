@@ -12,8 +12,7 @@
 {% endblock navbar %}
 
 {% block content %}
-<header class="intro-header"
-        style="background-image: url('https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/home-bg.jpg')">
+<header class="intro-header" style="background-image: url('https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -32,7 +31,6 @@
         <div class="col-lg-8 col-md-10">
             <div class="container">
 
-
                 <ul class="talk-list">
                 {% for post in posts %}
                     <li class="post" style="list-style-type: none;">
@@ -41,22 +39,17 @@
                 {% endfor %}
                 </ul>
 
+                {% if posts %}
+                <ul class="pager">
+                    {% if pagination.has_prev %}
+                        <li class="previous"><a href="{{ url_for('blog.blog_home', page=pagination.prev_num) }}">&larr; Newer</a></li>
+                    {% endif %}
 
-                <!--{% if posts %}-->
-                <!--<ul class="pager">-->
-                    <!--{% if pagination.has_prev %}-->
-                    <!--<li class="previous"><a href="{{ url_for('blog.index', page=pagination.prev_num) }}">&larr; Newer</a></li>-->
-                    <!--{% else %}-->
-                    <!--<li class="previous disabled"><a href="#">&larr; Newer</a></li>-->
-                    <!--{% endif %}-->
-                    <!--{% if pagination.has_next %}-->
-                    <!--<li class="next"><a href="{{ url_for('blog.index', page=pagination.next_num) }}">Older &rarr;</a></li>-->
-                    <!--{% else %}-->
-                    <!--<li class="next disabled"><a href="#">Older &rarr;</a></li>-->
-                    <!--{% endif %}-->
-                <!--</ul>-->
-                <!--{% endif %}-->
-
+                    {% if pagination.has_next %}
+                        <li class="next"><a href="{{ url_for('blog.blog_home', page=pagination.next_num) }}">Older &rarr;</a></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
 
             </div>
         </div>
