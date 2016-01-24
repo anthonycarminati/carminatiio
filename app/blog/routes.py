@@ -14,30 +14,12 @@ def blog_home():
     return render_template('blog/index.html', posts=post_list, pagination=pagination)
 
 
-# @blog.route('/profile', methods=['GET', 'POST'])
-# @login_required
-# def profile():
-#     form = ProfileForm()
-#     if form.validate_on_submit():
-#         current_user.name = form.name.data
-#         current_user.location = form.location.data
-#         current_user.bio = form.bio.data
-#         db.session.add(current_user._get_current_object())
-#         db.session.commit()
-#         flash('Your profile has been updated.')
-#         return redirect(url_for('blog.user', username=current_user.username))
-#     form.name.data = current_user.name
-#     form.location.data = current_user.location
-#     form.bio.data = current_user.bio
-#     return render_template('blog/profile.html', form=form)
-
-
 @blog.route('/new', methods=['GET', 'POST'])
 @login_required  # TODO - Require login for creating a new blog post
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(author_id=1) # current_user) # TODO - Get rid of author hard coding
+        post = Post(author_id=current_user.get_id())
         form.to_model(post)
         db.session.add(post)
         db.session.commit()
@@ -82,8 +64,7 @@ def new_post():
 #     else:
 #         comments_query = post.approved_comments()
 #     page = request.args.get('page', 1, type=int)
-#     pagination = comments_query.order_by(Comment.timestamp.asc()).\
-#         paginate(page, per_page=current_app.config['COMMENTS_PER_PAGE'], error_out=False)
+#     pagination = comments_query.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config['COMMENTS_PER_PAGE'], error_out=False)
 #     comments = pagination.items
 #     headers = {}
 #     if current_user.is_authenticated():
@@ -109,3 +90,21 @@ def new_post():
 #         abort(403)
 #     comments = Comment.for_moderation().order_by(Comment.timestamp.asc())
 #     return render_template('blog/moderate.html', comments=comments)
+
+
+# @blog.route('/profile', methods=['GET', 'POST'])
+# @login_required
+# def profile():
+#     form = ProfileForm()
+#     if form.validate_on_submit():
+#         current_user.name = form.name.data
+#         current_user.location = form.location.data
+#         current_user.bio = form.bio.data
+#         db.session.add(current_user._get_current_object())
+#         db.session.commit()
+#         flash('Your profile has been updated.')
+#         return redirect(url_for('blog.user', username=current_user.username))
+#     form.name.data = current_user.name
+#     form.location.data = current_user.location
+#     form.bio.data = current_user.bio
+#     return render_template('blog/profile.html', form=form)

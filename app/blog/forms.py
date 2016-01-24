@@ -19,17 +19,20 @@ class ProfileForm(Form):
 
 class PostForm(Form):
     title = StringField('Title', validators=[DataRequired(), Length(1, 255)])
+    subtitle = StringField('Sub-Title', validators=[DataRequired(), Length(1, 255)])
     body = TextAreaField('Body')
     # date = DateField('Date')
     submit = SubmitField('Submit')
 
-    # def from_model(self, post):
-    #     self.title.data = post.title
-    #     self.body.data = post.body
-    #     self.date.data = post.date
+    def from_model(self, post):
+        self.title.data = post.title
+        self.subtitle.data = post.subtitle
+        self.body.data = post.body
+        self.date.data = post.date
 
     def to_model(self, post):
         post.title = self.title.data
+        post.subtitle = self.subtitle.data
         post.body = self.body.data
         post.date = datetime.datetime.now()
 
