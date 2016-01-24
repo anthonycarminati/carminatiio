@@ -12,8 +12,7 @@ import config
 from sqlalchemy.engine.url import URL
 
 def db_connect():
-    return create_engine(URL(**config.database))
-
+    return create_engine(URL(**config['SQLALCHEMY_DATABASE_URI']))
 
 followers = db.Table(
     'followers',
