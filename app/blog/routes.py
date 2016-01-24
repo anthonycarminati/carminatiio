@@ -13,7 +13,7 @@ def blog_home():
     post_list = pagination.items
     return render_template('blog/index.html', posts=post_list, pagination=pagination)
 
-#
+
 # @blog.route('/profile', methods=['GET', 'POST'])
 # @login_required
 # def profile():
@@ -44,8 +44,8 @@ def new_post():
         flash('Your post was added successfully!')
         return redirect(url_for('.blog_home'))
     return render_template('blog/new_post.html', form=form)
-#
-#
+
+
 # @blog.route('/<int:post_id>', methods=['GET', 'POST'])
 # def post(post_id):
 #     post = Post.query.get_or_404(post_id)
@@ -93,15 +93,15 @@ def new_post():
 #                            form=form,
 #                            comments=comments,
 #                            pagination=pagination), 200, headers
-#
-#
+
+
 # @blog.route('/moderate')
 # @login_required
 # def moderate():
 #     comments = current_user.for_moderation().order_by(Comment.timestamp.asc())
 #     return render_template('blog/moderate.html', comments=comments)
-#
-#
+
+
 # @blog.route('/moderate-admin')
 # @login_required
 # def moderate_admin():
