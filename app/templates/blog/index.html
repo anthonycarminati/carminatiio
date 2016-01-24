@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends "template.html" %}
+<html lang="en">
+
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+<body>
+{% block navbar %}
+{{ super() }}
+{% endblock navbar %}
+
+{% block content %}
+<header class="intro-header"
+        style="background-image: url('https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Blog</h1>
+                    <hr class="small">
+                    <span class="subheading">My observations...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="container">
+                {% for post in posts.items %}
+                    {% include 'post.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
+
+{% block script %}
+{{ super() }}
+{% endblock script %}
+
+{% block footer %}
+{{ super() }}
+{% endblock footer %}
+</body>
+
+</html>
+
+
+

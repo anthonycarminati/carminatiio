@@ -1,7 +1,7 @@
-from flask import render_template, request, redirect, url_for, flash
-from flask.ext.login import login_user, logout_user, login_required
+from flask import render_template, request, redirect, url_for, flash, abort, g, session
+from flask.ext.login import login_user, logout_user, login_required, current_user
 from ..models import User
-from .forms import LoginForm
+from forms import LoginForm
 from . import auth
 
 
@@ -11,10 +11,11 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None or not user.verify_password(form.password.data):
-            flash('Invalid email or password')
+            flash('Invalid email or password.')
             return redirect(url_for('.login'))
-        login_user(user, form.remember_me.data)
-        return redirect(request.args.get('next') or url_for('blog.index'))
+        login_user(user, remember=form.remember_me.data)
+        flash('Logged in successfully.')
+        return redirect(url_for('site.index'))
     return render_template('auth/login.html', form=form)
 
 
@@ -23,4 +24,4 @@ def login():
 def logout():
     logout_user()
     flash('You have been logged out')
-    return redirect(url_for('blog.index'))
+    return render_template('auth/logout.html')

@@ -3,6 +3,7 @@ from wtforms import StringField, TextAreaField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Optional, Length, Email
 from wtforms.fields.html5 import DateField
 from flask.ext.pagedown.fields import PageDownField
+import datetime
 
 
 class SearchForm(Form):
@@ -17,19 +18,20 @@ class ProfileForm(Form):
 
 
 class PostForm(Form):
-    title = StringField('Title', validators=[DataRequired(), Length(1, 128)])
+    title = StringField('Title', validators=[DataRequired(), Length(1, 255)])
     body = TextAreaField('Body')
-    date = DateField('Date')
+    # date = DateField('Date')
+    submit = SubmitField('Submit')
 
-    def from_model(self, post):
-        self.title.data = post.title
-        self.body.data = post.body
-        self.date.data = post.date
+    # def from_model(self, post):
+    #     self.title.data = post.title
+    #     self.body.data = post.body
+    #     self.date.data = post.date
 
     def to_model(self, post):
         post.title = self.title.data
         post.body = self.body.data
-        post.date = self.date.data
+        post.date = datetime.datetime.now()
 
 
 class AdminCommentForm(Form):

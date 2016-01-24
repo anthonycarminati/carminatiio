@@ -21,7 +21,6 @@ def contact():
             return render_template('site/contact.html', form=form)
         elif form.validate() == True:
             msg = Message(form.subject.data, sender='noreply@carminati.io', recipients=['anthony@carminati.io'])
-            msg.body = 'test'
             msg.body = """
               From: {0} <{1}>
               {2}
