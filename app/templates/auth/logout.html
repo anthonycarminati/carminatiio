@@ -1,14 +1,21 @@
-<!--{% import "bootstrap/wtf.html" as wtf %}-->
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% extends "template.html" %}
 
+{% block head %}
+{{ super() }}
+    <meta http-equiv="refresh" content="3;url={{ url_for('site.index') }}" />
+{% endblock %}
+
+
 {% block content %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-sm-3 col-md-2">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <br>
-            Successfully Logged Out.
+            <br>
+            Successfully Logged Out. Redirecting in 3 seconds...
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}
