@@ -28,16 +28,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-10">
-            <div class="container">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                <ul>
                 {% for post in posts %}
-                    <li class="post" style="list-style-type: none;">
                     {% include "blog/_post.html" %}
-                    </li>
                 {% endfor %}
-                </ul>
 
                 {% if posts %}
                 <ul class="pager">
@@ -51,7 +46,6 @@
                 </ul>
                 {% endif %}
 
-            </div>
         </div>
     </div>
 </div>
