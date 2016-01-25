@@ -8,19 +8,58 @@
 
 <body>
 {% block navbar %}
-{{ super() }}
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('site.index') }}" style="color:#313131;">carminati.io</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ url_for('site.index') }}" style="color:#313131;">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('blog.blog_home') }}" style="color:#313131;">Blog</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('site.contact') }}" style="color:#313131;">Contact</a>
+                </li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.logout') }}" style="color:#313131;">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" style="color:#313131;">Login</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 {% endblock navbar %}
 
 {% block content %}
 <header class="intro-header"
-        style="background-image: url('https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/home-bg.jpg')">
+        style="background-image: url('https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/chicago-google_maps')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Contact</h1>
+                    <h1 style="color:#313131;">Contact</h1>
                     <hr class="small">
-                    <span class="subheading">Drop me a line</span>
+                    <span class="subheading" style="color:#313131;">Drop me a line</span>
                 </div>
             </div>
         </div>
