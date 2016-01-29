@@ -7,3 +7,4 @@
 *.DS_Store
 app/templates/examples
 app/templates/examples/**
+gunicorn_config.py
