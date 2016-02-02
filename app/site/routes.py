@@ -3,11 +3,13 @@ from . import site
 from .forms import ContactForm
 from app import mail
 from flask.ext.mail import Message
+from ..models import Post
 
 
 @site.route('/')
 def index():
-    return render_template('site/index.html')
+    post = Post.query.order_by(Post.post_date.desc()).first()
+    return render_template('site/index.html', post=post)
 
 @site.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -22,8 +24,9 @@ def contact():
         elif form.validate() == True:
             msg = Message(form.subject.data, sender='noreply@carminati.io', recipients=['anthony@carminati.io'])
             msg.body = """
-              From: {0} <{1}>
-              {2}
-              """.format(form.name.data, form.email.data, form.message.data)
+              From: {name}
+              Email Address: {email}
+              Message: {message}
+              """.format(name=form.name.data, email=form.email.data, message=form.message.data)
             mail.send(msg)
         return redirect(url_for('.contact'))
