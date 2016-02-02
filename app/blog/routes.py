@@ -8,8 +8,10 @@ from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
 
 @blog.route('/')
 def blog_home():
+    # db.create_engine()  # TODO - need to re-establish connection automatically
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.post_date.desc()).paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
+    pagination = Post.query.order_by(Post.post_date.desc())\
+        .paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
     post_list = pagination.items
     return render_template('blog/index.html', posts=post_list, pagination=pagination)
 
