@@ -6,14 +6,14 @@ A Python/Flask application built to deliver Anthony Carminati's personal website
 Usage and Deployment Notes
 ---------------------------
 Set the following environment variables prior to deployment:
-- SECRET_KEY
-- MAIL_SERVER
-- MAIL_PORT
-- MAIL_USE_SSL
-- MAIL_USE_TLS
-- MAIL_USERNAME
-- MAIL_PASSWORD
-- SQLALCHEMY_DATABASE_URI
+- `SECRET_KEY`
+- `MAIL_SERVER`
+- `MAIL_PORT`
+- `MAIL_USE_SSL`
+- `MAIL_USE_TLS`
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+- `SQLALCHEMY_DATABASE_URI`
 
 
 Copyright and License
