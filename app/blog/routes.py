@@ -8,8 +8,10 @@ from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
 
 @blog.route('/')
 def blog_home():
+    # db.create_engine()  # TODO - need to re-establish connection automatically
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.post_date.desc()).paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
+    pagination = Post.query.order_by(Post.post_date.desc())\
+        .paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
     post_list = pagination.items
     return render_template('blog/index.html', posts=post_list, pagination=pagination)
 
@@ -92,19 +94,19 @@ def new_post():
 #     return render_template('blog/moderate.html', comments=comments)
 
 
-# @blog.route('/profile', methods=['GET', 'POST'])
-# @login_required
-# def profile():
-#     form = ProfileForm()
-#     if form.validate_on_submit():
-#         current_user.name = form.name.data
-#         current_user.location = form.location.data
-#         current_user.bio = form.bio.data
-#         db.session.add(current_user._get_current_object())
-#         db.session.commit()
-#         flash('Your profile has been updated.')
-#         return redirect(url_for('blog.user', username=current_user.username))
-#     form.name.data = current_user.name
-#     form.location.data = current_user.location
-#     form.bio.data = current_user.bio
-#     return render_template('blog/profile.html', form=form)
+@blog.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    form = ProfileForm()
+    if form.validate_on_submit():
+        current_user.name = form.name.data
+        current_user.location = form.location.data
+        current_user.bio = form.bio.data
+        db.session.add(current_user._get_current_object())
+        db.session.commit()
+        flash('Your profile has been updated.')
+        return redirect(url_for('blog.blog_home'))
+    form.name.data = current_user.name
+    form.location.data = current_user.location
+    form.bio.data = current_user.bio
+    return render_template('blog/profile.html', form=form)

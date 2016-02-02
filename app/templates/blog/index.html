@@ -19,7 +19,7 @@
                 <div class="site-heading">
                     <h1>Blog</h1>
                     <hr class="small">
-                    <span class="subheading">From the desk of a professional tinkerer.</span>
+                    <span class="subheading">Some thoughts</span>
                 </div>
             </div>
         </div>
@@ -29,22 +29,25 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
 
-                {% for post in posts %}
-                    {% include "blog/_post.html" %}
-                {% endfor %}
+            {% for post in posts %}
+                {% include "blog/_post.html" %}
+            {% endfor %}
 
-                {% if posts %}
-                <ul class="pager">
-                    {% if pagination.has_prev %}
-                        <li class="previous"><a href="{{ url_for('blog.blog_home', page=pagination.prev_num) }}">&larr; Newer</a></li>
-                    {% endif %}
-
-                    {% if pagination.has_next %}
-                        <li class="next"><a href="{{ url_for('blog.blog_home', page=pagination.next_num) }}">Older &rarr;</a></li>
-                    {% endif %}
-                </ul>
+            {% if posts %}
+            <ul class="pager">
+                {% if pagination.has_prev %}
+                    <li class="previous"><a href="{{ url_for('blog.blog_home', page=pagination.prev_num) }}">&larr; Newer</a></li>
                 {% endif %}
+
+                {% if pagination.has_next %}
+                    <li class="next"><a href="{{ url_for('blog.blog_home', page=pagination.next_num) }}">Older &rarr;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
 
         </div>
     </div>

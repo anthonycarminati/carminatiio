@@ -1,10 +1,21 @@
-# carminati.io [![Build Status](https://travis-ci.org/anthonycarminati/carminatiio.svg?branch=master)](https://travis-ci.org/anthonycarminati/carminatiio)
+carminati.io [![Build Status](https://travis-ci.org/anthonycarminati/carminatiio.svg?branch=master)](https://travis-ci.org/anthonycarminati/carminatiio)
+===========================
 A Python/Flask application built to deliver Anthony Carminati's personal website at [carminati.io](http://carminati.io)
 
-# Blueprints
-## auth
-Handles all logging and user authentication
-## blog
-Handles all blog, comment, and user entries
-## site
-Delivers a single-page site. This is the core of carminati.io
+
+Usage and Deployment Notes
+---------------------------
+Set the following environment variables prior to deployment:
+- `SECRET_KEY`
+- `MAIL_SERVER`
+- `MAIL_PORT`
+- `MAIL_USE_SSL`
+- `MAIL_USE_TLS`
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+- `SQLALCHEMY_DATABASE_URI`
+
+
+Copyright and License
+---------------------------
+Copyright Anthony Carminati, carminati.io 2016
