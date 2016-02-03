@@ -1,5 +1,8 @@
 version: 0.0
 os: linux
 files:
-   - source: /
-     destination: /opt/carminatiio/
+  - source: /
+    destination: /opt/carminatiio/
+#hooks:
+#  AfterInstall:
+#    -
