@@ -14,7 +14,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # APPLICATION VARIABLES
-    TALKS_PER_PAGE = 10
+    TALKS_PER_PAGE = 3
 
 
 class DevelopmentConfig(Config):
