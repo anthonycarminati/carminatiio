@@ -1,1 +1,1 @@
-pip install -r /opt/carminatiio/requirements.txt
+sudo pip install -r /opt/carminatiio/requirements.txt
