@@ -8,3 +8,4 @@
 app/templates/examples
 app/templates/examples/**
 gunicorn_config.py
+blog_posts/
