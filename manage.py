@@ -1,4 +1,5 @@
 import os
+import sys
 from app import create_app
 from flask.ext.script import Manager
 from app import db
@@ -14,8 +15,9 @@ def adduser(first_name, last_name, email, username, admin=False):
     password = getpass()
     password2 = getpass(prompt='Confirm: ')
     if password != password2:
-        import sys
         sys.exit('Error: passwords do not match.')
+    if username in password:
+        sys.exit('Error: password cannot contain username.')
     db.create_all()
     user = User(name=first_name+" "+last_name,
                 email=email,
