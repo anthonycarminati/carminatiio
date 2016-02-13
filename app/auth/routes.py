@@ -38,33 +38,36 @@ def logout():
 def create_account():
     form = NewUser()
     if form.validate_on_submit():
-        # CREATE USER
-        user = User(email=form.email.data,
-                    password=form.email.data,
-                    username=form.email.data,
-                    name=form.first_name.data + " " + form.last_name.data)
-        db.session.add(user)
-        db.session.commit()
-        # GET SECURITY TOKEN
-        token = ts.dumps(form.email.data, salt='email-confirm-key')
-        confirm_url = url_for('auth.confirm_email', token=token, _external=True)
-        # WRITE CONFIRMATION EMAIL AND SEND
-        msg = Message(subject='Registration Confirmation for carminati.io!',
-                      sender='noreply@carminati.io',
-                      recipients=[form.email.data])
-        msg.body = """
-              Hey {first_name},
+        if User.query.filter_by(email=form.email.data).order_by(User.member_since.desc()).first():
+            flash('Email already registered!')
+        else:
+            # CREATE USER
+            user = User(email=form.email.data,
+                        password=form.email.data,
+                        username=form.email.data,
+                        name=form.first_name.data + " " + form.last_name.data)
+            db.session.add(user)
+            db.session.commit()
+            # GET SECURITY TOKEN
+            token = ts.dumps(form.email.data, salt='email-confirm-key')
+            confirm_url = url_for('auth.confirm_email', token=token, _external=True)
+            # WRITE CONFIRMATION EMAIL AND SEND
+            msg = Message(subject='Registration Confirmation for carminati.io!',
+                          sender='noreply@carminati.io',
+                          recipients=[form.email.data])
+            msg.body = """
+                  Hey {first_name},
 
-              Thanks for registering for my site! Please confirm your email with the link below:
+                  Thanks for registering for my site! Please confirm your email with the link below:
 
-              {confirm}
+                  {confirm}
 
-              -Anthony
+                  -Anthony
 
-              """.format(first_name=form.first_name.data, confirm=confirm_url)
-        mail.send(msg)
-        flash('Confirmation email sent!')
-        return redirect(url_for('site.index'))
+                  """.format(first_name=form.first_name.data, confirm=confirm_url)
+            mail.send(msg)
+            flash('Confirmation email sent!')
+            return redirect(url_for('site.index'))
     return render_template('auth/register.html', form=form)
 
 
