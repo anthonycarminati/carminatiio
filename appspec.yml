@@ -1,5 +1,14 @@
 version: 0.0
 os: linux
 files:
-   - source: /
-     destination: /opt/carminatiio/
+  - source: /
+    destination: /opt/carminatiio/
+hooks:
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 1800
+      runas: ubuntu
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 90
+      runas: ubuntu

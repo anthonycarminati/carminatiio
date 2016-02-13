@@ -7,10 +7,10 @@ from flask.ext.pagedown import PageDown
 from flask.ext.moment import Moment
 from flask.ext.mail import Mail
 from datetime import timedelta
+from flask.ext.misaka import Misaka
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
-
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 pagedown = PageDown()
@@ -28,6 +28,7 @@ def create_app(config_name):
     moment.init_app(app)
     mail.init_app(app)
     login_manager.init_app(app)
+    Misaka(app)
 
     from .site import site as site_blueprint
     app.register_blueprint(site_blueprint)
