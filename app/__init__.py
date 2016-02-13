@@ -11,7 +11,6 @@ from flask.ext.misaka import Misaka
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
-
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 pagedown = PageDown()

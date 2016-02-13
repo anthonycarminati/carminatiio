@@ -34,6 +34,7 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow())
     avatar_hash = db.Column(db.String(64))
     remember_me = db.Column(db.Boolean)
+    is_confirmed = db.Column(db.Boolean)
 
     post = db.relationship('Post', lazy='dynamic', backref='author')
     comment = db.relationship('Comment', lazy='dynamic', backref='author')
