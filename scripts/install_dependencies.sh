@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sudo pip install -r /opt/carminatiio/requirements.txt
+sudo pip install --upgrade -r /opt/carminatiio/requirements.txt
