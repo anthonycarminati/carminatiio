@@ -71,6 +71,28 @@
 {% endblock navbar %}
 
 {% block content %}
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+        {% for error in errors %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="flash alert alert-danger" role="alert">{{ error }}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endwith %}
+    {% with messages = get_flashed_messages(category_filter=["message"]) %}
+        {% for message in messages %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="flash alert alert-danger" role="alert">{{ message }}</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endwith %}
 {% endblock content %}
 
 {% block script %}
