@@ -9,3 +9,5 @@ app/templates/examples
 app/templates/examples/**
 gunicorn_config.py
 blog_posts/
+.DS_Store
+app/.DS_Store
