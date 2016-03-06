@@ -1,3 +1,14 @@
-language: ruby
+language: python
+python:
+  - "2.7"
+before_install:
+ - sudo apt-get install libffi-dev
+# command to install dependencies
+install: "pip install -r requirements.txt"
+# command to run tests
+script: nosetests
+# # update locale settings
+# before_install:
+#   - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en language-pack-de
 notifications:
   slack: carminatiio:ISZOupqjubPs27MjEKBRgdcv
