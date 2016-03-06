@@ -11,14 +11,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 from app import db, login_manager
 
+
 def db_connect():
     return create_engine(URL(**config['SQLALCHEMY_DATABASE_URI']))
 
-followers = db.Table(
-        'blog_follower',
-        db.Column('follower_id', db.Integer, db.ForeignKey('blog_user.id')),
-        db.Column('followed_id', db.Integer, db.ForeignKey('blog_user.id'))
-)
+
+# followers = db.Table(
+#         'blog_follower',
+#         db.Column('follower_id', db.Integer, db.ForeignKey('blog_user.id')),
+#         db.Column('followed_id', db.Integer, db.ForeignKey('blog_user.id'))
+# )
+
 
 class User(UserMixin, db.Model):
     __tablename__ = 'blog_user'
@@ -161,6 +164,13 @@ class Comment(db.Model):
                     if self.author_email != comment.author_email:
                         notify_list[comment.author_email] = comment.author_name
         return notify_list.items()
+
+
+class Follower(UserMixin, db.Model):
+    __tablename__ = 'blog_follower'
+
+    follower_id = db.Column(db.Integer, db.ForeignKey('blog_user.id'))
+    followed_id = db.Column(db.Integer, db.ForeignKey('blog_user.id'))
 
 
 # db.event.listen(Comment.body, 'set', Comment.on_changed_body)
