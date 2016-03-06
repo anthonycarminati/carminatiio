@@ -8,8 +8,8 @@ from ..models import Post
 
 @site.route('/')
 def index():
-    post = Post.query.order_by(Post.post_date.desc()).first()
-    return render_template('site/index.html', post=post)
+    # post = Post.query.order_by(Post.post_date.desc()).first()
+    return render_template('site/index.html')
 
 @site.route('/contact', methods=['GET', 'POST'])
 def contact():
