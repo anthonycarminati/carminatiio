@@ -15,7 +15,7 @@ def db_connect():
     return create_engine(URL(**config['SQLALCHEMY_DATABASE_URI']))
 
 followers = db.Table(
-        'blog_followers',
+        'blog_follower',
         db.Column('follower_id', db.Integer, db.ForeignKey('blog_user.id')),
         db.Column('followed_id', db.Integer, db.ForeignKey('blog_user.id'))
 )

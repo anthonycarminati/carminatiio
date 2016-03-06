@@ -19,10 +19,24 @@ from datetime import datetime
 
 def upgrade():
     op.create_table(
-        'blog_comment'
+        'blog_comment',
+        sa.Column('id', sa.Integer, primary_key=True),
+        sa.Column('body', sa.Text),
+        sa.Column('comment_date', sa.DateTime, index=True, default=datetime.utcnow()),
+        sa.Column('commenter_id', sa.Integer, sa.ForeignKey('blog_user.id')),
+        sa.Column('notify', sa.Boolean),
+        sa.Column('approved', sa.Boolean),
+        sa.Column('post_id', sa.Integer, sa.ForeignKey('blog_post.id'))
     )
     op.create_table(
-        'blog_post'
+        'blog_post',
+        sa.Column('id', sa.Integer, primary_key=True),
+        sa.Column('author_id', sa.Integer, sa.ForeignKey('blog_user.id')),
+        sa.Column('title', sa.String(255)),
+        sa.Column('subtitle', sa.String(255)),
+        sa.Column('body', sa.Text),
+        sa.Column('post_date', sa.DateTime, index=True, default=datetime.utcnow())
+
     )
     op.create_table(
         'blog_user',
@@ -40,9 +54,14 @@ def upgrade():
         sa.Column('is_confirmed', sa.Boolean)
     )
     op.create_table(
-        'blog_followers'
+        'blog_follower',
+        sa.Column('follower_id', sa.Integer, sa.ForeignKey('blog_user.id')),
+        sa.Column('followed_id', sa.Integer, sa.ForeignKey('blog_user.id'))
     )
 
 
 def downgrade():
-    pass
+    op.drop_table('blog_comment')
+    op.drop_table('blog_post')
+    op.drop_table('blog_user')
+    op.drop_table('blog_follower')
