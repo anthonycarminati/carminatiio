@@ -27,12 +27,13 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
+    DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 config = {
     'development': DevelopmentConfig,
-    'testing': TestingConfig,
+    # 'testing': TestingConfig,
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
