@@ -33,10 +33,22 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
             {% for message in get_flashed_messages() %}
-                <div class="flash alert alert-success" role="alert">{{ message }}</div>
+            <div class="flash alert alert-success" role="alert">{{ message }}</div>
             {% endfor %}
-            {% include "site/_about.html" %}
+
+            <h1 class="section-heading text-center">Background</h1>
+
+            <p class="text-center">My appreciation for computing stems from the desire to find a more elegant and efficient means of
+                                   solving problems. These days my core skills and interests include cloud computing infrastructure, data
+                                   architecture, and analytics.</p>
+
+            <p class="text-center">As a tinkerer, I've always got a new project on my plate. The purpose of this site is to share
+                                   my discoveries and innovations. When I'm not developing I can usually be found exploring the coffee, beer, or food
+                                   scene here
+                                   in Chicago.</p>
+
         </div>
     </div>
 </div>
