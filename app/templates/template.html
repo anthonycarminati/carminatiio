@@ -40,6 +40,29 @@
 {% endblock navbar %}
 
 {% block content %}
+
+    <!-- Menu -->
+    <nav class="navbar navbar-default" role="navigation" id="nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-reorder"></i>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="{{url_for('static', filename='img/logo/logo.png') }}" alt="Logo">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right" id="navbar">
+          <ul class="nav navbar-nav">
+            <li><a href="#home">Home <span class="sr-only">home</span></a></li>
+            <li><a href="#about">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     {% with errors = get_flashed_messages(category_filter=["error"]) %}
         {% for error in errors %}
         <div class="container">
@@ -107,11 +130,9 @@
             <div class="col-sm-6">Copyright &copy; 2016 carminati.io</div>
             <div class="col-sm-6 text-right">
                 <div class="social">
-                    <a href="#" class="btn btn-theme"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="btn btn-theme"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-theme"><i class="fa fa-google-plus"></i></a>
-                    <a href="#" class="btn btn-theme"><i class="fa fa-dribbble"></i></a>
-                    <a href="#" class="btn btn-theme"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:anthony@carminati.io" class="btn btn-theme"><i class="fa fa-envelope-o"></i></a>
+                    <a href="https://twitter.com/acarminati89" class="btn btn-theme"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/anthonycarminati" class="btn btn-theme"><i class="fa fa-github"></i></a>
                 </div>
             </div>
         </div>
