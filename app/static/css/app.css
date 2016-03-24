@@ -635,6 +635,7 @@ p.copyright {
  *  --------------------------------------------------------- */
 .navbar {
   margin-bottom: 0;
+  margin-left: 10;
 }
 .navbar-default {
   background-color: transparent;

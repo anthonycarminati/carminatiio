@@ -21,7 +21,7 @@ $(function () {
 	 */
 	
 	$.backstretch([
-		"assets/img/background/1.jpg"
+		"https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/hancock_dark.jpg"
 	], {duration: 3800, fade: 1500});
 	
 	
@@ -136,7 +136,7 @@ $(function () {
 	 */
 	
 	twitterFetcher.fetch({
-	  "id": '345170787868762112',
+	  "id": '712709385676427264',
 	  "domId": '',
 	  "maxTweets": 3,
 	  "enableLinks": true,
