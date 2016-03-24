@@ -719,6 +719,7 @@ p.copyright {
 .navbar .container{
 	width: 100%;
 	padding: 15px 10%;
+    padding-right: 8%;
 }
 #nav.affix {
 	position: fixed;
