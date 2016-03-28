@@ -330,7 +330,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h3 class="section-title">Contact</h3>
+                <h3 class="section-title">Drop Me a Line</h3>
                 <div class="section-title-border"></div>
             </div>
         </div>
@@ -347,25 +347,27 @@
                 </ul>
             </div>
             <div class="col-sm-6 wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0s">
-                <form class="form-horizontal" action="../../static/php/contactForm.php" method="post" role="form" id="contactForm">
+                <form action="{{ url_for('site.index') }}" method=post>
+                    {{ form.hidden_tag() }}
                     <div class="form-group">
                         <div class="col-sm-6">
-                            <input type="text" name="name" class="form-control" placeholder="Name">
+                            <label>{{ form.name.label() }}</label>
+                            {{ form.name(type="text", class="form-control", placeholder="Name", id="name") }}
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" name="contactEmail" class="form-control" placeholder="Email">
+                            <label>{{ form.email.label() }}</label>
+                            {{ form.email(type="email", class="form-control", placeholder="Email Address", id="email") }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <textarea name="message" class="form-control" rows="8" placeholder="Message"></textarea>
+                            <label>{{ form.message.label() }}</label>
+                            {{ form.message(rows="5", class="form-control", placeholder="Message", id="message") }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-theme ladda-button" data-style="expand-left">
-                                <span class="ladda-label">Submit</span>
-                            </button>
+                            {{ form.submit(type="submit") }}
                         </div>
                     </div>
                 </form>
