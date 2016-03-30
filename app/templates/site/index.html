@@ -347,7 +347,7 @@
                 </ul>
             </div>
             <div class="col-sm-6 wow fadeInRight" data-wow-duration="0.7s" data-wow-delay="0s">
-                <form action="{{ url_for('site.index') }}" method=post>
+                <form action="{{ url_for('site.index') }}" method=post role="form" class="form-horizontal">
                     {{ form.hidden_tag() }}
                     <div class="form-group">
                         <div class="col-sm-6">
@@ -367,7 +367,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            {{ form.submit(type="submit") }}
+                            {{ form.submit(type="submit", class="btn btn-theme ladda-label") }}
                         </div>
                     </div>
                 </form>
