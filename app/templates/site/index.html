@@ -9,9 +9,24 @@
 <body>
 
 {% block content %}
+
+<div class="main-container">
+    <section class="fullscreen image-bg">
+        <div class="background-image-holder">
+            <img alt="image" class="background-image" src="https://s3.amazonaws.com/anthonycarminati-backgrounds/carminatiio/hancock_dark.jpg"/>
+        </div>
+        <div class="container v-align-transform">
+            <div class="row">
+                X
+            </div>
+        </div>
+    </section>
+</div>
+
 {% endblock content %}
 
 {% block footer %}
+{{ super() }}
 {% endblock footer %}
 
 {% block script %}
