@@ -14,11 +14,10 @@ def index():
     if request.method == 'GET':
         return render_template('site/index.html', form=form)
     elif request.method == 'POST':
-        if form.validate() == False:
+        if not form.validate():
             flash('All fields are required.')
             return render_template('site/index.html', form=form)
-            print 'VALIDATEION FAILED'
-        elif form.validate() == True:
+        elif form.validate():
             msg = Message(form.subject.data, sender='noreply@carminati.io', recipients=['anthony@carminati.io'])
             msg.body = """
               From: {name}
