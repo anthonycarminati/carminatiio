@@ -120,6 +120,7 @@ class Post(db.Model):
     title = db.Column(db.String(255))
     subtitle = db.Column(db.String(255))
     body = db.Column(db.Text)
+    tag_id = db.Column(db.String(255), db.ForeignKey('dim_tag.id'))
     post_date = db.Column(db.DateTime, index=True, default=datetime.utcnow())
 
 
@@ -182,3 +183,14 @@ class Comment(db.Model):
 #
 #     @staticmethod
 #     def already_in_queue(email, talk):
+
+class Tag(db.Model):
+    __tablename__ = 'dim_tag'
+
+    id = db.Column(db.Integer, primary_key=True)
+    tag_desc = db.Column(db.String(255))
+
+    post = db.relationship('Post', lazy='dynamic', backref='tag')
+
+    def __repr__(self):
+        return '<Tag {tag}>'.format(tag=self.tag_desc)
