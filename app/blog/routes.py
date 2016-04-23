@@ -13,7 +13,7 @@ def blog_home():
     pagination = Post.query.order_by(Post.post_date.desc())\
         .paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
     post_list = pagination.items
-    return render_template('blog/index.html', posts=post_list, pagination=pagination)
+    return render_template('blog/blog.html', posts=post_list, pagination=pagination)
 
 
 @blog.route('/new', methods=['GET', 'POST'])

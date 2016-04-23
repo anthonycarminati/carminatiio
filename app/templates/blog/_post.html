@@ -10,3 +10,35 @@
     <p class="post-meta">Posted by {{post.author.name}} on {{post.post_date}}</p>
 </div>
 <hr>
+
+
+<div class="post-snippet mb64">
+    <a href="{{url_for('blog.post', post_id = post.id)}}">
+        <img class="mb24" alt="Post Image" src="{{url_for('static', filename='img/blog-single-4.jpg')}}"/>
+    </a>
+    <div class="post-title">
+        <span class="label">23 Sep</span>
+        <a href="{{url_for('blog.post', post_id = post.id)}}">
+            <h4 class="inline-block">{{post.title}}</h4>
+        </a>
+    </div>
+    <ul class="post-meta">
+        <li>
+            <i class="ti-user"></i>
+<span>Written by
+<a href="#">Craig Garner</a>
+</span>
+        </li>
+        <li>
+            <i class="ti-tag"></i>
+<span>Tagged as
+<a href="#">Lifestyle</a>
+</span>
+        </li>
+    </ul>
+    <hr>
+    <p>
+        {{post.subtitle}}
+    </p>
+    <a class="btn btn-sm" href="{{url_for('blog.post', post_id = post.id)}}">Read More</a>
+</div>
