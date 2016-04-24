@@ -18,9 +18,9 @@
     </a>
     <div class="post-title">
         <span class="label">23 Sep {{post.post_date}}</span>
-
+        <a href="{{url_for('blog.post', post_id = post.id)}}">
             <h4 class="inline-block">{{post.title}}</h4>
-
+        </a>
     </div>
     <ul class="post-meta">
         <li>

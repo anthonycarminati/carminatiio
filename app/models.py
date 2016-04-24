@@ -123,7 +123,6 @@ class Post(db.Model):
     tag_id = db.Column(db.String(255), db.ForeignKey('dim_tag.id'))
     post_date = db.Column(db.DateTime, index=True, default=datetime.utcnow())
 
-
     def __repr__(self):
         return '<Post {body}>'.format(body=self.body)
 
