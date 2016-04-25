@@ -122,6 +122,7 @@ class Post(db.Model):
     body = db.Column(db.Text)
     tag_id = db.Column(db.String(255), db.ForeignKey('dim_tag.id'))
     post_date = db.Column(db.DateTime, index=True, default=datetime.utcnow())
+    stream_picture = db.Column(db.String(255))
 
     def __repr__(self):
         return '<Post {body}>'.format(body=self.body)
