@@ -2,13 +2,14 @@ from flask import render_template, flash, redirect, url_for, abort, request, cur
 from . import blog
 from flask.ext.login import login_required, current_user
 from .. import db
-from ..models import User, Post, Comment
+from ..models import User, Post
 from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
-
+import os
 
 @blog.route('/')
 def blog_home():
-    # db.create_engine()  # TODO - need to re-establish connection automatically
+    print os.environ.get('SQLALCHEMY_DATABASE_URI')
+    db.create_engine()  # TODO - need to re-establish connection automatically
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.order_by(Post.post_date.desc())\
         .paginate(page, per_page=current_app.config['TALKS_PER_PAGE'], error_out=False)
