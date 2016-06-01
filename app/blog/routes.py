@@ -11,6 +11,9 @@ import os
 def blog_home():
     print 'THIS IS AN ENV VAR1---->', os.environ.get('MAIL_SERVER')
     print 'THIS IS AN ENV VAR2---->', os.environ.get('SQLALCHEMY_DATABASE_URI')
+    print "Content-Type: text/plain\n\n"
+    for key in os.environ.keys():
+        print "%30s %s \n" % (key, os.environ[key])
     # db.create_engine()  # TODO - need to re-establish connection automatically
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.order_by(Post.post_date.desc())\
