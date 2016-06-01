@@ -9,6 +9,7 @@ import os
 
 @blog.route('/')
 def blog_home():
+    print 'THIS IS AN ENV VAR---->', os.environ.get('MAIL_SERVER')
     print 'THIS IS AN ENV VAR---->', os.environ.get('SQLALCHEMY_DATABASE_URI')
     # db.create_engine()  # TODO - need to re-establish connection automatically
     page = request.args.get('page', 1, type=int)
