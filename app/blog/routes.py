@@ -2,8 +2,9 @@ from flask import render_template, flash, redirect, url_for, abort, request, cur
 from . import blog
 from flask.ext.login import login_required, current_user
 from .. import db
-from ..models import User, Post, Comment
+from ..models import User, Post
 from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
+import os
 
 
 @blog.route('/')
