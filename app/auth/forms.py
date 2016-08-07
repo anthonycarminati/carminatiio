@@ -9,6 +9,7 @@ class LoginForm(Form):
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Login')
 
+
 class NewUser(Form):
     email = StringField('Email Address', validators=[DataRequired(), Email()])
     first_name = StringField('First Name', validators=[DataRequired()])
