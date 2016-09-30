@@ -34,65 +34,9 @@ def new_post():
 @blog.route('/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    comment = None
-    # if current_user.is_authenticated():
-    #     form = AdminCommentForm()
-    #     if form.validate_on_submit():
-    #         comment = Comment(body=form.body.data,
-    #                           post=post,
-    #                           author=current_user,
-    #                           notify=False,
-    #                           approved=True)
-    # else:
-    #     form = CommentForm()
-    #     if form.validate_on_submit():
-    #         comment = Comment(body=form.body.data,
-    #                           post=post,
-    #                           author_name=form.name.data,
-    #                           author_email=form.email.data,
-    #                           notify=form.notify.data,
-    #                           approved=False)
-    # if comment:
-    #     db.session.add(comment)
-    #     db.session.commit()
-    #     if comment.approved:
-    #         # send_comment_notification(comment)
-    #         flash('Your comment has been published.')
-    #     else:
-    #         # send_author_notification(post)
-    #         flash('Your comment will be published once it has been approved.')
-    #     return redirect(url_for('.post', id=post.post_id) + '#top')
-    # if post.author == current_user or (current_user.is_authenticated() and current_user.is_admin):
-    #     comments_query = post.comments
-    # else:
-    #     comments_query = post.approved_comments()
-    # page = request.args.get('page', 1, type=int)
-    # pagination = comments_query.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config['COMMENTS_PER_PAGE'], error_out=False)
-    # comments = pagination.items
-    # headers = {}
-    # if current_user.is_authenticated():
-    #     headers['X-XSS-Protection'] = '0'
     return render_template('blog/post.html',
-                           post=post)#,
-                           # form=form,
-                           # comments=comments,
-                           # pagination=pagination), 200, headers
+                           post=post)
 
-
-# @blog.route('/moderate')
-# @login_required
-# def moderate():
-#     comments = current_user.for_moderation().order_by(Comment.timestamp.asc())
-#     return render_template('blog/moderate.html', comments=comments)
-
-
-# @blog.route('/moderate-admin')
-# @login_required
-# def moderate_admin():
-#     if not current_user.is_admin:
-#         abort(403)
-#     comments = Comment.for_moderation().order_by(Comment.timestamp.asc())
-#     return render_template('blog/moderate.html', comments=comments)
 
 
 @blog.route('/profile', methods=['GET', 'POST'])
