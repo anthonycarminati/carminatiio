@@ -1,15 +1,20 @@
-.idea/
-*.log
-**.conf
-**/**.conf
-**.pyc
+# General Items
 **/**.DS_Store
 *.DS_Store
+**/**.log
+**/**.conf
+**/**.pyc
+.idea/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Application Files
 app/templates/examples
 app/templates/examples/**
 gunicorn_config.py
 blog_posts/
-.DS_Store
-app/.DS_Store
 alembic-dev.ini
 alembic-prod.ini
