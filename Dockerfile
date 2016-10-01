@@ -40,5 +40,5 @@ EXPOSE 80
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
 
-# Run application
+# - application
 CMD ["gunicorn", "manage:app"]
