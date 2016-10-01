@@ -4,6 +4,7 @@
 **/**.log
 **/**.conf
 **/**.pyc
+*.pyc
 .idea/
 
 # Elastic Beanstalk Files
