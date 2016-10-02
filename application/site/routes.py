@@ -1,7 +1,7 @@
 from flask import render_template, request, flash, redirect, url_for
 from . import site
 from .forms import ContactForm
-from app import mail
+from application import mail
 from flask.ext.mail import Message
 from ..models import Post
 
