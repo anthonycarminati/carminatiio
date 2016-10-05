@@ -1,10 +1,10 @@
 from flask import render_template, request, redirect, url_for, flash, abort, g, session
-from flask.ext.login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required, current_user
 from ..models import User
 from forms import LoginForm, NewUser
 from . import auth
 from app import db, mail
-from flask.ext.mail import Message
+from flask_mail import Message
 from .util import ts
 
 

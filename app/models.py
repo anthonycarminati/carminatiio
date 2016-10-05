@@ -1,12 +1,11 @@
 import hashlib
-import bleach
 import config
 from datetime import datetime
 from markdown import markdown
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import request, current_app
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 from app import db, login_manager

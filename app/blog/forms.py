@@ -1,23 +1,23 @@
-from flask.ext.wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Optional, Length, Email
 from wtforms.fields.html5 import DateField
-from flask.ext.pagedown.fields import PageDownField
+from flask_pagedown.fields import PageDownField
 import datetime
 
 
-class SearchForm(Form):
+class SearchForm(FlaskForm):
     search = StringField('search', validators=[DataRequired()])
 
 
-class ProfileForm(Form):
+class ProfileForm(FlaskForm):
     name = StringField('Name', validators=[Optional(), Length(1, 64)])
     location = StringField('Location', validators=[Optional(), Length(1, 64)])
     bio = TextAreaField('Bio')
     submit = SubmitField('Submit')
 
 
-class PostForm(Form):
+class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(1, 255)])
     subtitle = StringField('Sub-Title', validators=[DataRequired(), Length(1, 255)])
     body = TextAreaField('Body')
@@ -37,12 +37,12 @@ class PostForm(Form):
         post.date = datetime.datetime.now()
 
 
-class AdminCommentForm(Form):
+class AdminCommentForm(FlaskForm):
     body = PageDownField('Comment', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
-class CommentForm(Form):
+class CommentForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(1, 64)])
     email = StringField('Email', validators=[DataRequired, Length(1, 64), Email()])
     body = PageDownField('Comment', validators=[DataRequired()])

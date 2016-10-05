@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, abort, request, current_app, Markup
 from . import blog
-from flask.ext.login import login_required, current_user
+from flask_login import login_required, current_user
 from .. import db
 from ..models import User, Post
 from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
