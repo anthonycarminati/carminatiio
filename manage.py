@@ -1,12 +1,12 @@
 import os
 import sys
-from application import create_app
+from app import create_app
 from flask.ext.script import Manager
-from application import db
-from application.models import User
+from app import db
+from app.models import User
 
-application = create_app(os.getenv('FLASK_CONFIG') or 'default')
-manager = Manager(application)
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+manager = Manager(app)
 
 @manager.command
 def adduser(first_name, last_name, email, username, admin=False):

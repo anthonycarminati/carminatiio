@@ -4,7 +4,6 @@ from flask.ext.login import login_required, current_user
 from .. import db
 from ..models import User, Post
 from .forms import ProfileForm, PostForm, CommentForm, AdminCommentForm
-import os
 
 
 @blog.route('/')

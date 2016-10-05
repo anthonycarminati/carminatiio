@@ -1,6 +1,6 @@
 /*!
 
-Copyright © 2014 Eli Grey.
+Copyright ï¿½ 2014 Eli Grey.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -60,7 +60,7 @@ var saveAs = saveAs
 				throw ex;
 			}, 0);
 		}
-		, force_saveable_type = "application/octet-stream"
+		, force_saveable_type = "app/octet-stream"
 		, fs_min_size = 0
 		// See https://code.google.com/p/chromium/issues/detail?id=375297#c7 for
 		// the reasoning behind the timeout and revocation flow
@@ -148,7 +148,7 @@ var saveAs = saveAs
 				return;
 			}
 			// Object and web filesystem URLs have a problem saving in Google Chrome when
-			// viewed in a tab, so I force save with application/octet-stream
+			// viewed in a tab, so I force save with app/octet-stream
 			// http://code.google.com/p/chromium/issues/detail?id=91158
 			// Update: Google errantly closed 91158, I submitted it again:
 			// https://code.google.com/p/chromium/issues/detail?id=389642
