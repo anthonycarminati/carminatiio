@@ -1,13 +1,13 @@
 from flask import Flask, session
 from config import config
-from flask.ext.bootstrap import Bootstrap
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from flask.ext.pagedown import PageDown
-from flask.ext.moment import Moment
-from flask.ext.mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_pagedown import PageDown
+from flask_moment import Moment
+from flask_mail import Mail
 from datetime import timedelta
-from flask.ext.misaka import Misaka
+from flask_misaka import Misaka
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'

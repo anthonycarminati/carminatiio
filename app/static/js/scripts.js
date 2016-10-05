@@ -724,7 +724,7 @@ $(document).ready(function() {
                         method: "GET",
                         cache: false,
                         dataType: 'json',
-                        contentType: 'application/json; charset=utf-8',
+                        contentType: 'app/json; charset=utf-8',
                         success: function(data){
                             // Request was a success, what was the response?
                             if (data.result != "success" && data.Status != 200) {

@@ -496,7 +496,7 @@ Usage:
  * @param {Object=} options the options for creating this objects (optional).
  */
 function JSZip(data, options) {
-    // if this constructor is used without `new`, it adds `new` before itself:
+    // if this constructor isï¿½used withoutï¿½`new`, itï¿½adds `new` beforeï¿½itself:
     if(!(this instanceof JSZip)) return new JSZip(data, options);
     
     // object containing the files :
@@ -1486,7 +1486,7 @@ else {
     var buffer = new ArrayBuffer(0);
     try {
         exports.blob = new Blob([buffer], {
-            type: "application/zip"
+            type: "app/zip"
         }).size === 0;
     }
     catch (e) {
@@ -1494,7 +1494,7 @@ else {
             var Builder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
             var builder = new Builder();
             builder.append(buffer);
-            exports.blob = builder.getBlob('application/zip').size === 0;
+            exports.blob = builder.getBlob('app/zip').size === 0;
         }
         catch (e) {
             exports.blob = false;
@@ -1822,7 +1822,7 @@ exports.arrayBuffer2Blob = function(buffer) {
     try {
         // Blob constructor
         return new Blob([buffer], {
-            type: "application/zip"
+            type: "app/zip"
         });
     }
     catch (e) {
@@ -1832,7 +1832,7 @@ exports.arrayBuffer2Blob = function(buffer) {
             var Builder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
             var builder = new Builder();
             builder.append(buffer);
-            return builder.getBlob('application/zip');
+            return builder.getBlob('app/zip');
         }
         catch (e) {
 
@@ -5477,7 +5477,7 @@ function deflate(strm, flush) {
   }
 
   flush_pending(strm);
-  /* If avail_out is zero, the application will call deflate again
+  /* If avail_out is zero, the app will call deflate again
    * to flush the rest.
    */
   if (s.wrap > 0) { s.wrap = -s.wrap; }
