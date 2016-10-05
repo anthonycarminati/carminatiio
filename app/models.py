@@ -9,7 +9,7 @@ from flask import request, current_app
 from flask.ext.login import UserMixin
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
-from application import db, login_manager
+from app import db, login_manager
 
 
 def db_connect():

@@ -3,12 +3,8 @@ from flask.ext.login import login_user, logout_user, login_required, current_use
 from ..models import User
 from forms import LoginForm, NewUser
 from . import auth
-from application import db
+from app import db, mail
 from flask.ext.mail import Message
-from application import mail
-from itsdangerous import URLSafeTimedSerializer
-import application
-import os
 from .util import ts
 
 
