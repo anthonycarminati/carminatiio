@@ -17,8 +17,16 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Refresh apt-get meta-data and install python tools
 RUN apt-get update
-RUN apt-get install -y python python-dev python-distribute python-pip build-essential
-RUN apt-get install -y awscli libffi-dev libpq-dev
+RUN apt-get install -y \
+gcc \
+python \
+python-dev \
+python-distribute \
+python-pip \
+build-essential \
+awscli \
+libffi-dev \
+libpq-dev
 
 # Set new working directory to application root
 WORKDIR /
@@ -40,5 +48,8 @@ EXPOSE 5000
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
 
-# - app
+# Set new working directory to application root
+WORKDIR /src
+
+# Run Application
 CMD ["gunicorn", "-b 0.0.0.0:5000", "manage:app"]

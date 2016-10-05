@@ -6,6 +6,8 @@
 **/**.pyc
 *.pyc
 .idea/
+*.private
+**/**.private
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
