@@ -8,7 +8,7 @@ machine:
 dependencies:
   pre:
     - pip install awscli
-    - docker build -t carminatiio .
+    - docker build -t anthonycarminati/carminatiio .
 
 test:
   post:
