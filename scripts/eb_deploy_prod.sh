@@ -3,10 +3,10 @@
 
 # SET ENVIRONMENT VARIABLES
 SHA1=$1
-ENV=dev
+ENV=prod
 APPLICATION_NAME=carminatiio
 EB_BUCKET=anthonycarminati-carminatiio
-# DOCKERRUN_FILE=$SHA1-Dockerrun.aws.json # May need to enable for use with dev/prod
+# DOCKERRUN_FILE=$SHA1-Dockerrun.aws.json
 DOCKERRUN_FILE=Dockerrun.aws.json
 echo "Environment Variables have been set successfully"
 
